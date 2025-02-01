@@ -1,0 +1,11 @@
+.sai-logo{
+    height: 50px;
+}
+.page-header__logo{
+    background: none !important;
+}
+.about-us-ul{
+    list-style-type: none;
+    color: white;
+    line-height: 15pt;
+}
