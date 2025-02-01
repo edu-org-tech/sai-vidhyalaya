@@ -16,6 +16,31 @@
     <link rel="stylesheet" href="static/css/font-awesome.css">
     <link rel="stylesheet" href="static/css/screen.min.css">
     <link rel="stylesheet" href="static/css/custom.min.css">
+
+    <style>    
+        input[type="text"] {
+          padding: 10px;
+          width: 300px;
+          margin: 10px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+        }
+        button {
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+        }
+        .output {
+          margin-top: 20px;
+          padding: 15px;
+          background-color: #e0ffe0;
+          border-radius: 5px;
+          display: inline-block;
+        }
+      </style>
 </head>
 
 <body><!-- $Page header-->
@@ -31,6 +56,7 @@
                     <li><a class="page-header__nav-link js-anchor js-link" href="#about-us">About</a></li>
                     <li><a class="page-header__nav-link js-anchor js-link" href="#gallery">Gallery</a></li>
                     <li><a class="page-header__nav-link js-anchor js-link" href="#contact">Contact</a></li>
+                    <li><a class="page-header__nav-link js-anchor js-link" href="#Mood-prediction">Mood Prediction</a></li>
                 </ul>
             </nav>
         </div>
@@ -133,6 +159,45 @@
             </div>
         </div>
     </section><!-- $Page footer-->
+    <section class="portfolio mood-pre" id="Mood-prediction">
+        <h1>Mood Prediction AI</h1>
+        <p>Type something, and I'll tell you the mood!</p>
+        <input type="text" id="textInput" placeholder="How are you feeling today?" />
+        <button onclick="predictMood()">Predict Mood</button>
+        <div id="result" class="output" style="display: none;"></div>
+    </section>
+    <script>
+      function predictMood() {
+        const text = document.getElementById("textInput").value.trim();
+        const resultDiv = document.getElementById("result");
+
+        if (!text) {
+          resultDiv.style.display = "block";
+          resultDiv.style.backgroundColor = "#ffe0e0";
+          resultDiv.textContent = "Please enter something.";
+          return;
+        }
+
+        // Simple keyword-based sentiment analysis (dummy AI logic)
+        const positiveWords = ["happy", "great", "awesome", "fantastic", "good"];
+        const negativeWords = ["sad", "bad", "terrible", "angry", "upset"];
+        
+        let mood = "Neutral 🤔";
+
+        // Check if input contains any positive or negative keywords
+        if (positiveWords.some(word => text.toLowerCase().includes(word))) {
+          mood = "Positive 😊";
+          resultDiv.style.backgroundColor = "#e0ffe0";
+        } else if (negativeWords.some(word => text.toLowerCase().includes(word))) {
+          mood = "Negative 😢";
+          resultDiv.style.backgroundColor = "#ffe0e0";
+        }
+
+        resultDiv.style.display = "block";
+        resultDiv.textContent = `Mood: ${mood}`;
+      }
+    </script>
+
     <footer class="page-footer">
         <div class="page-footer__inner"><span class="page-footer__copyright">&copy;  Sai Vidyalaya CBSE</span><a class="page-footer__gotop js-anchor" href="#home">Go to top</a></div>
     </footer>

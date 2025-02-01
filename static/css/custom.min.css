@@ -9,3 +9,6 @@
     color: white;
     line-height: 15pt;
 }
+.mood-pre{
+    min-height: 300px !important;
+}
